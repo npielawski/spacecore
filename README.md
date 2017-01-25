@@ -3,6 +3,37 @@
 Spacecore is a script allowing to start, stop and execute script on a
 aws instance of amazon.
 
+# Example
+```
+$ spacecore start
+Starting Server...OK!
+[-] Current server state: running
+Allocating IP Address...OK! (ip: 42.42.42.42)
+Associating server to ip...OK!
+Done.
+
+$ spacecore run keras-mnist-gpu.py
+Sending file keras-mnist-gpu.py to server (42.42.42.42)...
+The authenticity of host '42.42.42.42 (42.42.42.42)' can't be established.
+ECDSA key fingerprint is SHA256:______________________________.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '42.42.42.42' (ECDSA) to the list of known hosts.
+keras-mnist-gpu.py                                                     100% 2073    65.3KB/s   00:00    
+Using TensorFlow backend.
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcublas.so locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcudnn.so locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcufft.so locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:128] successfully opened CUDA library libcurand.so locally
+...
+
+$ spacecore stop
+Stopping Server...OK!
+Disassociating server from ip...OK!
+Releasing IP Address...OK!
+Done.
+```
+
 ## Dependencies
 You will need to install the aws command line (http://docs.aws.amazon.com/cli/latest/userguide/installing.html) and boto3 python lib:
 ```
