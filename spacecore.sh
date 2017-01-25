@@ -1,7 +1,7 @@
 #!/bin/bash
 # Author: Nicolas Pielawski
 # Creation date: May 13 2016
-source ./spacecore.cfg
+source /opt/spacecore/spacecore.cfg
 
 # Is there an argument ?
 if [ $# -eq 0 -o "$1" == "help" ]
