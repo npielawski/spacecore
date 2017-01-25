@@ -1,10 +1,7 @@
 #!/bin/bash
 # Author: Nicolas Pielawski
 # Creation date: May 13 2016
-sv_user="ubuntu"
-sv_path="/home/$sv_user/"
-sv_key="/home/nicolas/.ssh/MachineLearningKey.pem"
-sv_id="i-00000000"
+source ./spacecore.cfg
 
 # Is there an argument ?
 if [ $# -eq 0 -o "$1" == "help" ]
@@ -14,7 +11,7 @@ then
     echo "* stop: stop the instance"
     echo "* run: send and run a python file"
     echo "* send: send a file to the server"
-    echo "* send: get a file fromg the server"
+    echo "* get: download a file from the server"
     echo "* status: get the status of the server"
     echo "* ip: get the IP of the server"
     echo "* ssh: start a SSH client"

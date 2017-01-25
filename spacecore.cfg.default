@@ -1,0 +1,11 @@
+# SERVER SIDE
+# Username on the server
+sv_user="ubuntu"
+# Workspace path on the server
+sv_path="/home/$sv_user/"
+
+# CLIENT SIDE
+# Key to connect to the server
+sv_key="/home/user/.ssh/yourkey.pem"
+# Instance ID of the server
+sv_id="i-00000000"
