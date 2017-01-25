@@ -22,12 +22,15 @@ Now, you will have to create an aws instance (g2.2xlarge for instance), and ther
 is no need to associate an IP address, the script will create an elastic IP and
 destroy it when you shutdown the instance. Also, write down the Instance ID.
 
-The final step is to configure the spacecore.sh file. There are several variables
-that you can configure:
+The final step is to configure the spacecore.cfg file. First, you will need to
+copy or rename spacecore.cfg.default into spacecore.cfg. There are several
+variables that you can configure:
 * _sv_user_ User name of the aws instance
 * _sv_path_ Path to the workspace of the script
 * _sv_key_ Link to the key file (extension .pem)
 * _sv_id_ Instance ID that you just wrote down
+
+It is done, have fun!
 
 ## Usage
 ### Starting the instance
