@@ -58,8 +58,9 @@ copy or rename spacecore.cfg.default into spacecore.cfg. There are several
 variables that you can configure:
 * _sv_user_ User name of the aws instance
 * _sv_path_ Path to the workspace of the script
-* _sv_key_ Link to the key file (extension .pem)
-* _sv_id_ Instance ID that you just wrote down
+* _sv_interpreter_ Interpreter to use on the server (default: python3)
+* _cl_key_ Link to the key file (extension .pem)
+* _cl_id_ Instance ID that you just wrote down
 
 It is done, have fun!
 

@@ -22,12 +22,12 @@ fi
 case "$1" in
     "start")
         # Starting server
-        /opt/spacecore/aws_instance.py start $sv_id
+        /opt/spacecore/aws_instance.py start $cl_id
         echo "Done."
         ;;
     "stop")
         # Stopping server
-        /opt/spacecore/aws_instance.py stop $sv_id
+        /opt/spacecore/aws_instance.py stop $cl_id
         echo "Done."
         ;;
     "run")
@@ -40,15 +40,15 @@ case "$1" in
             echo "File $2 doesn't exist (check your rights, too)"
             exit
         fi
-        if [ $(/opt/spacecore/aws_instance.py status $sv_id) != "running" ]
+        if [ $(/opt/spacecore/aws_instance.py status $cl_id) != "running" ]
         then
             echo "Server is not running yet!"
             exit
         fi
-        sv_address=$(/opt/spacecore/aws_instance.py ip $sv_id)
+        sv_address=$(/opt/spacecore/aws_instance.py ip $cl_id)
         echo "Sending file $2 to server ($sv_address)..."
-        scp -i $sv_key $2 $sv_user@$sv_address:$sv_path$(basename $2)
-        ssh -i $sv_key -t $sv_user@$sv_address "sudo -i python3 $sv_path$(basename $2)"
+        scp -i $cl_key $2 $sv_user@$sv_address:$sv_path$(basename $2)
+        ssh -i $cl_key -t $sv_user@$sv_address "sudo -i $sv_interpreter $sv_path$(basename $2)"
         ;;
     "send")
         if [ -z $2 ]
@@ -60,14 +60,14 @@ case "$1" in
             echo "File $2 doesn't exist (check your rights, too)"
             exit
         fi
-        if [ $(/opt/spacecore/aws_instance.py status $sv_id) != "running" ]
+        if [ $(/opt/spacecore/aws_instance.py status $cl_id) != "running" ]
         then
             echo "Server is not running yet!"
             exit
         fi
-        sv_address=$(/opt/spacecore/aws_instance.py ip $sv_id)
+        sv_address=$(/opt/spacecore/aws_instance.py ip $cl_id)
         echo "Sending file $2 to server ($sv_address)..."
-        scp -i $sv_key $2 $sv_user@$sv_address:$sv_path$(basename $2)
+        scp -i $cl_key $2 $sv_user@$sv_address:$sv_path$(basename $2)
         ;;
     "get")
         if [ -z $2 ]
@@ -75,30 +75,30 @@ case "$1" in
             echo "You must name the file to download"
             exit
         fi
-        if [ $(/opt/spacecore/aws_instance.py status $sv_id) != "running" ]
+        if [ $(/opt/spacecore/aws_instance.py status $cl_id) != "running" ]
         then
             echo "Server is not running yet!"
             exit
         fi
-        sv_address=$(/opt/spacecore/aws_instance.py ip $sv_id)
+        sv_address=$(/opt/spacecore/aws_instance.py ip $cl_id)
         echo "Downloading file $2 from server ($sv_address)..."
-        scp -i $sv_key $sv_user@$sv_address:$sv_path/$2 .
+        scp -i $cl_key $sv_user@$sv_address:$sv_path/$2 .
         ;;
     "status")
-        /opt/spacecore/aws_instance.py status $sv_id
+        /opt/spacecore/aws_instance.py status $cl_id
         ;;
     "ip")
-        /opt/spacecore/aws_instance.py ip $sv_id
+        /opt/spacecore/aws_instance.py ip $cl_id
         ;;
     "ssh")
-        if [ $(/opt/spacecore/aws_instance.py status $sv_id) != "running" ]
+        if [ $(/opt/spacecore/aws_instance.py status $cl_id) != "running" ]
         then
             echo "Server is not running yet!"
             exit
         fi
-        sv_address=$(/opt/spacecore/aws_instance.py ip $sv_id)
+        sv_address=$(/opt/spacecore/aws_instance.py ip $cl_id)
         echo "Trying to connect to $sv_address..."
-        ssh -i $sv_key -t $sv_user@$sv_address
+        ssh -i $cl_key -t $sv_user@$sv_address
         ;;
     "help")
         ;;

@@ -3,9 +3,11 @@
 sv_user="ubuntu"
 # Workspace path on the server
 sv_path="/home/$sv_user/"
+# Interpreter to use
+sv_interpreter="python3"
 
 # CLIENT SIDE
 # Key to connect to the server
-sv_key="/home/user/.ssh/yourkey.pem"
+cl_key="/home/user/.ssh/yourkey.pem"
 # Instance ID of the server
-sv_id="i-00000000"
+cl_id="i-00000000"
