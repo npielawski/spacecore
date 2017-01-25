@@ -7,9 +7,17 @@ sv_key="/home/nicolas/.ssh/MachineLearningKey.pem"
 sv_id="i-00000000"
 
 # Is there an argument ?
-if [ $# -eq 0 ]
+if [ $# -eq 0 -o "$1" == "help" ]
 then
     echo "What would you like to do, sir ?"
+    echo "* start: start the instance"
+    echo "* stop: stop the instance"
+    echo "* run: send and run a python file"
+    echo "* send: send a file to the server"
+    echo "* status: get the status of the server"
+    echo "* ip: get the IP of the server"
+    echo "* ssh: start a SSH client"
+    echo "* help: print this help"
     exit
 fi
 
@@ -79,8 +87,9 @@ case "$1" in
         echo "Trying to connect to $sv_address..."
         ssh -i $sv_key -t $sv_user@$sv_address
         ;;
+    "help")
+        ;;
     *)
         echo "Invalid argument"
         ;;
 esac
-
