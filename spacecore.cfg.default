@@ -2,7 +2,7 @@
 # Username on the server
 sv_user="ubuntu"
 # Workspace path on the server
-sv_path="/home/$sv_user/"
+sv_path="/home/$sv_user"
 # Interpreter to use
 sv_interpreter="python3"
 
