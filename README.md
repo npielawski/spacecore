@@ -3,6 +3,12 @@
 Spacecore is a script allowing to start, stop and execute script on a
 aws instance of amazon.
 
+## Dependencies
+You will need to install the aws command line (http://docs.aws.amazon.com/cli/latest/userguide/installing.html) and boto3 python lib:
+```
+sudo pip3 install boto3
+```
+
 ## Installation
 Copy the folder spacecore in /opt and add the following line to your .bashrc
 ```
