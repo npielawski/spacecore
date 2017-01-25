@@ -14,9 +14,6 @@ Done.
 
 $ spacecore run keras-mnist-gpu.py
 Sending file keras-mnist-gpu.py to server (42.42.42.42)...
-The authenticity of host '42.42.42.42 (42.42.42.42)' can't be established.
-ECDSA key fingerprint is SHA256:______________________________.
-Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added '42.42.42.42' (ECDSA) to the list of known hosts.
 keras-mnist-gpu.py                                                     100% 2073    65.3KB/s   00:00    
 Using TensorFlow backend.
