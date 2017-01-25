@@ -50,6 +50,12 @@ spacecore send <file>
 ```
 Uploads a file in the workspace.
 
+### Downloading a file
+```
+spacecore get <file>
+```
+Download a file from the workspace.
+
 ### Running a script
 ```
 spacecore run <script.py>

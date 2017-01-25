@@ -14,7 +14,7 @@ then
     echo "* stop: stop the instance"
     echo "* run: send and run a python file"
     echo "* send: send a file to the server"
-    echo "* send: get a file from the server"
+    echo "* send: get a file fromg the server"
     echo "* status: get the status of the server"
     echo "* ip: get the IP of the server"
     echo "* ssh: start a SSH client"
