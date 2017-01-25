@@ -14,6 +14,7 @@ then
     echo "* stop: stop the instance"
     echo "* run: send and run a python file"
     echo "* send: send a file to the server"
+    echo "* send: get a file from the server"
     echo "* status: get the status of the server"
     echo "* ip: get the IP of the server"
     echo "* ssh: start a SSH client"
@@ -70,6 +71,21 @@ case "$1" in
         sv_address=$(/opt/spacecore/aws_instance.py ip $sv_id)
         echo "Sending file $2 to server ($sv_address)..."
         scp -i $sv_key $2 $sv_user@$sv_address:$sv_path$(basename $2)
+        ;;
+    "get")
+        if [ -z $2 ]
+        then
+            echo "You must name the file to download"
+            exit
+        fi
+        if [ $(/opt/spacecore/aws_instance.py status $sv_id) != "running" ]
+        then
+            echo "Server is not running yet!"
+            exit
+        fi
+        sv_address=$(/opt/spacecore/aws_instance.py ip $sv_id)
+        echo "Downloading file $2 from server ($sv_address)..."
+        scp -i $sv_key $sv_user@$sv_address:$sv_path/$2 .
         ;;
     "status")
         /opt/spacecore/aws_instance.py status $sv_id
