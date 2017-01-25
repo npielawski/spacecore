@@ -50,12 +50,14 @@ def wait_for_state(waited_state, time_to_wait=1):
     spin = 0
     spins = "-\|/"
     state = server_status(server_id)
-    print("[{}] Current server state: {}" % (spins[spin], state), end='\r')
+    print("[{}] Current server state: {}".format(spins[spin], state),
+          end='\r')
     spin += 1
     while state != waited_state:
         time.sleep(time_to_wait)
         state = server_status(server_id)
-        print("[{}] Current server state: {}" % (spins[spin], state), end='\r')
+        print("[{}] Current server state: {}".format(spins[spin], state),
+              end='\r')
         spin = (spin + 1) % len(spins)
     print()
 
