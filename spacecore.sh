@@ -48,7 +48,8 @@ case "$1" in
         sv_address=$(/opt/spacecore/aws_instance.py ip $cl_id)
         echo "Sending file $2 to server ($sv_address)..."
         scp -o "StrictHostKeyChecking no" -i $cl_key $2 $sv_user@$sv_address:$sv_path/$(basename $2)
-        ssh -o "StrictHostKeyChecking no" -i $cl_key -t $sv_user@$sv_address "sudo -i $sv_interpreter $sv_path/$(basename $2)"
+        svcmd="sudo -i bash -c "'"'"cd $sv_path; $sv_interpreter $sv_path/$(basename $2)"'"'
+        ssh -o "StrictHostKeyChecking no" -i $cl_key -t $sv_user@$sv_address "$svcmd"
         ;;
     "send")
         if [ -z $2 ]
